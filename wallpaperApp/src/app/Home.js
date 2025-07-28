@@ -9,75 +9,93 @@ import { close, search } from '../constants/Images'
 import { theme } from '../constants/theme'
 import { heightPercent, widthPercent } from '../utilities/commonFunctions'
 import { Categories } from './appComponents/Categories'
+import ImageGrid from './appComponents/ImageGrid'
 
 const Home = () => {
-  
-  const {top}=useSafeAreaInsets();
-  const paddingTop = top > 0 ? top+10 : 10;
-  const [isClosePressed, setIsClosedPressed]=useState(false);
-  const [searchText, setSearchText]=useState('');
-  const [activeCategory, setActiveCategory] = useState('nature');
 
-const handleCategoryChange = (category) => {
-  setActiveCategory(category);
-};
+  const { top } = useSafeAreaInsets();
+  const paddingTop = top > 0 ? top + 10 : 10;
+  const [isClosePressed, setIsClosedPressed] = useState(false);
+  const [searchText, setSearchText] = useState('');
+  const [activeCategory, setActiveCategory] = useState('backgrounds');
+  const [images, setImages] = useState([]);
 
-useEffect(()=>{
-  fetchImages();
-}, [])
+  const handleCategoryChange = (category) => {
+    setActiveCategory(category);
+  };
 
-const fetchImages = async (params ={page:1}, append=true) => {
-  let res = await apiCall(params);
-  console.log('Result - ', res);
-}
+  useEffect(() => {
+    fetchImages();
+  }, [])
+
+  const fetchImages = async (params = { page: 1 }, append = false) => {
+    let res = await apiCall(params);
+    console.log('Response data - ', res.data)
+    //You're adding new images to the end of the existing ones.
+    if (append) {
+      setImages(prev => [...prev, ...res.data.hits]);
+    } else {
+      setImages(res.data.hits);
+    }
+
+  }
   return (
-    <View style={[styles.container, {paddingTop}]}>
-      {/*header*/}
+    <View style={[styles.container, { paddingTop }]}>
+
       <View style={styles.header}>
-      <Pressable>
-        <Text style={styles.title}>
-          Pixels
-        </Text>
-      </Pressable>
-      <Pressable>
-        <FontAwesome6 name="bars-staggered" color={theme.colors.neutral(0.7)}/>
-      </Pressable>
-      
-    </View>
-      <ScrollView 
-       contentContainerStyle={{gap:scale(15)}}
-      >
+        <Pressable>
+          <Text style={styles.title}>
+            Pixels
+          </Text>
+        </Pressable>
+        <Pressable>
+          <FontAwesome6 name="bars-staggered" color={theme.colors.neutral(0.7)} size={22} />
+        </Pressable>
+      </View>
+  
         <InputWithIcon placeholder='Search picture here' source1={search} source2={close} onChange={(text) => setSearchText(text)} value={searchText}
           onPressSource2={() => {
             setSearchText('');
             setIsClosedPressed(prev => !prev);
           }}
         />
-        
-        <Categories handleCategoryChange={handleCategoryChange} activeCategory={activeCategory}/>
-        </ScrollView>
+
+      <View>
+        <Categories handleCategoryChange={handleCategoryChange} activeCategory={activeCategory} />
       </View>
+
+      <ScrollView
+        contentContainerStyle={{ gap: scale(15) }}
+      >
+        <View>
+          {
+            images.length > 0 && <ImageGrid images={images} />
+          }
+        </View>
+      </ScrollView>
+    </View>
   )
 }
 
 
 const styles = StyleSheet.create({
-  container:{
-    flex:1,
-    gap:scale(12),
-    backgroundColor:theme.colors.white,
+  container: {
+    flex: 1,
+    gap: scale(12),
+    backgroundColor: theme.colors.white,
   },
-  header:{
-    marginHorizontal:widthPercent(6),
-    flexDirection:'row',
-    justifyContent:'space-between',
-    alignItems:'center',
+  header: {
+    marginHorizontal: widthPercent(6),
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    gap: widthPercent(30),
+    alignItems: 'center',
   },
-   title: {
-      fontSize: heightPercent(2.8),
-      color: theme.colors.neutral(0.9),
-      fontWeight: theme.fontWeights.medium
-    },
+  title: {
+    fontSize: heightPercent(3),
+    color: theme.colors.neutral(0.9),
+    fontWeight: theme.fontWeights.medium,
+  },
 })
 
 export default Home
