@@ -2,12 +2,12 @@ import { Dimensions } from "react-native";
 
 const {width:deviceWidth, height:deviceHeight}=Dimensions.get('window');
 
-export const wp = percentage =>{
+export const widthPercent = percentage =>{
   const width = deviceWidth;
   return (percentage*width)/100;
 }
 
-export const hp = percentage =>{
+export const heightPercent = percentage =>{
   const height = deviceHeight; 
   return (percentage*height)/100;
 }
