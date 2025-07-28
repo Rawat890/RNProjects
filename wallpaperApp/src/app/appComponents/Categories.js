@@ -43,9 +43,8 @@ const styles = StyleSheet.create({
   categoryItem: {
     backgroundColor: theme.colors.grayBg,
     paddingHorizontal: scale(12),
-    paddingVertical: scale(8),
+    paddingVertical: scale(10),
     borderRadius: scale(20),
-    marginRight: scale(10),
   },
   activeCategoryItem: {
     backgroundColor: 'green'
