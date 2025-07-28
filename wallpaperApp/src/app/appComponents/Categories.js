@@ -1,14 +1,16 @@
 import { FlatList, StyleSheet, Text, TouchableOpacity } from 'react-native';
+import Animated, { FadeInRight } from 'react-native-reanimated';
 import { scale } from 'react-native-size-matters';
 import { data } from '../../constants/data';
 import { theme } from '../../constants/theme';
 
 export const Categories = ({ handleCategoryChange, activeCategory }) => {
 
-  const renderItem = ({ item }) => {
+  const renderItem = ({ item , index}) => {
     const isActive = item === activeCategory;
 
     return (
+      <Animated.View entering={FadeInRight.delay(index*200).duration(1000).springify().damping(14)}>
       <TouchableOpacity
         style={[styles.categoryItem, isActive && styles.activeCategoryItem]}
         onPress={() => handleCategoryChange(item)}
@@ -17,6 +19,7 @@ export const Categories = ({ handleCategoryChange, activeCategory }) => {
           {item}
         </Text>
       </TouchableOpacity>
+      </Animated.View>
     );
   };
 
