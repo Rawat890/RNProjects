@@ -1,0 +1,1 @@
+export const welcome = require('../../assets/images/AppImages/welcome.png')
