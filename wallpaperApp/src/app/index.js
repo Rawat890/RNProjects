@@ -4,18 +4,17 @@ import Animated, { FadeInDown } from 'react-native-reanimated';
 
 import { useRouter } from 'expo-router';
 import { scale } from 'react-native-size-matters';
-import CustomButton from '../src/components/CustomButton';
-import { welcome } from "../src/constants/Images";
-import { NavigationRoutes } from '../src/constants/NavigationRoutes';
-import { theme } from '../src/constants/theme';
-import { heightPercent, widthPercent } from "../src/utilities/commonFunctions";
+import CustomButton from '../components/CustomButton';
+import { welcome } from "../constants/Images";
+import { theme } from '../constants/theme';
+import { heightPercent, widthPercent } from "../utilities/commonFunctions";
 
 export default function WelcomeScreen() {
 
   const router = useRouter();
 
   const navigateToHome = ()=>{
-    router.push(NavigationRoutes.HOME)
+    router.push('/Home')
   }
   return (
     <View style={styles.container}>
