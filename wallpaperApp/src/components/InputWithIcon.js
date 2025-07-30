@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
   paddingHorizontal: scale(12),
   marginHorizontal:scale(12),
   paddingVertical: scale(8),
-  backgroundColor: theme.colors.grayBg,
+  backgroundColor: theme.colors.white,
   borderRadius: scale(25),
   flexDirection: 'row',
   alignItems: 'center',
