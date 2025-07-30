@@ -10,17 +10,17 @@ export const InputWithIcon = ({ placeholder, secureEntry, onChange, value, sourc
         <Image source={source1} style={styles.icon}/>
         <TextInput
           placeholder={placeholder}
-          secureTextEntry={secureEntry}
-          onChangeText={onChange}
-          value={value}
-          placeholderTextColor={theme.colors.black}
-          style={styles.inputText}
-        />
+        secureTextEntry={secureEntry}
+        onChangeText={onChange}
+        value={value}
+        placeholderTextColor={theme.colors.black}
+        style={styles.inputText}
+      />
       {source2 && (
         <Pressable onPress={onPressSource2}>
           <Image source={source2} style={styles.icon} />
         </Pressable>
-)}
+      )}
 
     </View>
   )
