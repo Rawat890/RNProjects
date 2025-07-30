@@ -41,7 +41,7 @@ const styles = StyleSheet.create({
     gap: scale(10),
   },
   categoryItem: {
-    backgroundColor: theme.colors.grayBg,
+    backgroundColor: theme.colors.white,
     paddingHorizontal: scale(12),
     paddingVertical: scale(10),
     borderRadius: scale(20),
