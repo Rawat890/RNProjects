@@ -1,5 +1,6 @@
 import { FontAwesome6 } from '@expo/vector-icons'
-import { useEffect, useState } from 'react'
+import { debounce } from 'lodash'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import { scale } from 'react-native-size-matters'
@@ -12,13 +13,14 @@ import { Categories } from './appComponents/Categories'
 import ImageGrid from './appComponents/ImageGrid'
 
 const Home = () => {
-
+  console.log('Home rendered');
   const { top } = useSafeAreaInsets();
   const paddingTop = top > 0 ? top + 10 : 10;
   const [isClosePressed, setIsClosedPressed] = useState(false);
   const [searchText, setSearchText] = useState('');
   const [activeCategory, setActiveCategory] = useState('backgrounds');
   const [images, setImages] = useState([]);
+  const searchRef = useRef('');
 
   const handleCategoryChange = (category) => {
     setActiveCategory(category);
@@ -39,6 +41,23 @@ const Home = () => {
     }
 
   }
+
+const handleSearch = (text) => {
+  console.log('Searching for - ', text);
+};
+
+const handleSearchDebounced = useCallback(debounce(handleSearch, 400), []);
+
+const handleTextChange = (text) => {
+  searchRef.current = text;            // No re-render here
+  handleSearchDebounced(text);         // Debounced effect
+};
+
+
+useEffect(() => {
+  return () => handleSearchDebounced.cancel();
+}, [handleSearchDebounced]);
+
   return (
     <View style={[styles.container, { paddingTop }]}>
 
@@ -53,11 +72,11 @@ const Home = () => {
         </Pressable>
       </View>
   
-        <InputWithIcon placeholder='Search picture here' source1={search} source2={close} onChange={(text) => setSearchText(text)} value={searchText}
-          onPressSource2={() => {
-            setSearchText('');
-            setIsClosedPressed(prev => !prev);
-          }}
+      <InputWithIcon placeholder='Search picture here' source1={search} source2={close} onChange={handleTextChange} value={searchText}
+        onPressSource2={() => {
+          setSearchText('');
+          setIsClosedPressed(prev => !prev);
+        }}
         />
 
       <View>
@@ -65,7 +84,7 @@ const Home = () => {
       </View>
 
       <ScrollView
-        contentContainerStyle={{ gap: scale(15) }}
+        contentContainerStyle={{ gap: scale(15)}}
       >
         <View>
           {
@@ -82,7 +101,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     gap: scale(12),
-    backgroundColor: theme.colors.white,
+    backgroundColor:' #F0F0F0',
   },
   header: {
     marginHorizontal: widthPercent(6),
