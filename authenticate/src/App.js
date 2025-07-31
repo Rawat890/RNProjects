@@ -1,7 +1,9 @@
-import AppNavigator from './navigation/AppNavigator'
+import AppNavigator from './navigation/AppNavigator';
 
-export default function App() {
+ function App() {
   return (
     <AppNavigator/>
   )
 }
+
+export default App;
