@@ -1,3 +1,4 @@
+import "../global.css";
 import AppNavigator from './navigation/AppNavigator';
 
  function App() {
