@@ -1,0 +1,68 @@
+🧱 Layout & Box Model
+Class	Description
+container	Sets a responsive max-width and centers the content
+flex	Applies flexbox layout
+grid	Applies grid layout
+block	Displays an element as a block
+inline-block	Displays inline-level block
+hidden	Hides an element
+w-full	Width: 100%
+h-screen	Height: 100vh (full screen)
+p-4	Padding: 1rem (16px) all sides
+m-2	Margin: 0.5rem (8px) all sides
+
+🎨 Colors & Background
+Class	Description
+bg-gray-100	Background color: light gray
+bg-blue-500	Background color: medium blue
+text-white	Text color: white
+text-black	Text color: black
+hover:bg-blue-700	Background on hover: darker blue
+border	Adds 1px border
+border-gray-300	Border color
+shadow	Applies a default shadow
+
+✏️ Typography
+Class	Description
+text-sm	Small text size
+text-lg	Large text size
+font-bold	Makes text bold
+font-semibold	Slightly bolder than normal
+uppercase	Transforms text to uppercase
+tracking-wide	Letter spacing increased
+leading-tight	Tighter line height
+text-center	Centers text
+
+📱 Responsive Design
+Class	Description
+md:flex	Applies flex on medium screens and up
+sm:hidden	Hides on small screens
+lg:w-1/2	Width is 50% on large screens
+xl:text-xl	Extra large text on XL screens
+md:grid-cols-2	Two-column grid from medium screens
+
+🤏 Spacing (Padding & Margin)
+Class	Description
+mt-4	Margin top: 1rem
+mb-2	Margin bottom: 0.5rem
+px-6	Horizontal padding: 1.5rem
+py-3	Vertical padding: 0.75rem
+space-x-4	Horizontal space between child elements
+gap-6	Gap between grid/flex items
+
+🧭 Position & Z-Index
+Class	Description
+relative	Sets position to relative
+absolute	Sets position to absolute
+z-10	Z-index: 10
+top-0	Top position: 0
+left-1/2	Left: 50%
+-translate-x-1/2	Translate on X by -50% (centering)
+
+🔄 State & Interaction
+Class	Description
+hover:text-blue-600	Text color on hover
+focus:outline-none	Removes default focus outline
+active:bg-gray-200	Background when active
+disabled:opacity-50	Reduces opacity when disabled
+
