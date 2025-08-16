@@ -1,19 +1,21 @@
 import { useNavigation } from '@react-navigation/native';
 import { Image, ScrollView, Text, TouchableOpacity, TouchableWithoutFeedback, View } from 'react-native';
 import { scale } from 'react-native-size-matters';
+import { Images } from '../constants/images';
 import { Routes } from '../constants/routes';
 import { getDimension } from '../utilities/commonFunctions';
-import { styles } from '../utilities/theme';
+import { styling } from '../utilities/theme';
 
 const [screenWidth,screenHeight]=getDimension(); 
 
 function MovieList({title, data}) {
 
   let movieName ='Ant Man';
+  console.log("Image:", Images.naruto);
 
   const navigation = useNavigation();
 
-  const navigateToMovie =()=>{
+  const navigateToMovie =(item)=>{
     navigation.navigate(Routes.MOVIE, item)
   }
   return (
@@ -21,7 +23,7 @@ function MovieList({title, data}) {
       <View className="mx-4 flex-row justify-between items-center">
       <Text className="text-white text-xl">{title}</Text>
       <TouchableOpacity>
-        <Text style={styles.text} className="text=lg">
+        <Text style={styling.text} className="text=lg">
           See All
         </Text>
       </TouchableOpacity>
@@ -36,10 +38,11 @@ function MovieList({title, data}) {
           return (
             <TouchableWithoutFeedback
             key={index}
-            onPress={()=>{navigateToMovie}}
+            onPress={()=>navigateToMovie(item)}
             >
+              <View>
               <Image
-              source={}
+              source={Images.train}
               className="rounded-3xl"
               style={{
                 width:screenWidth*0.33,
@@ -51,6 +54,7 @@ function MovieList({title, data}) {
                 movieName.length >14 ?movieName.slice(0,14) + '...' : movieName
                 }
                 </Text>
+                </View>
             </TouchableWithoutFeedback>
           )
         })}
