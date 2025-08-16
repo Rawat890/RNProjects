@@ -1,10 +1,8 @@
-import { Text, View } from 'react-native';
+import AppNavigator from './navigation/AppNavigator';
 
 function App() {
   return (
-    <View>
-      <Text>App</Text>
-    </View>
+    <AppNavigator/>
   )
 }
 
