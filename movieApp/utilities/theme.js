@@ -7,7 +7,7 @@ export const theme ={
   text:'#eab308',
 }
 
-export const styles ={
+export const styling ={
   text:{color:theme.text},
   background:{backgroundColor:theme.background},
 }
