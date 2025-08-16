@@ -14,13 +14,13 @@ export default function HomeScreen() {
   const [topRated, setTopRated]=useState([1,2,3])
 
   return (
-    <View clasName ="flex-1 bg-neutral-800">
+    <View className ="flex-1 bg-neutral-800">
 
       {/*search bar and logo*/}
-      <SafeAreaView clasName={ios ? "-mb-2":"mb-3"}>
-      <View clasName="flex-row justify-between items-center mx-4">
+      <SafeAreaView className={ios ? "-mb-2":"mb-3"}>
+      <View className="flex-row justify-between items-center mx-4">
         <Bars3CenterLeftIcon size="30" color={colors.white}/>
-        <Text clasName="text-white text-3xl font-bold">
+        <Text className="text-white text-3xl font-bold">
          Movies
         </Text>
         <TouchableOpacity>
