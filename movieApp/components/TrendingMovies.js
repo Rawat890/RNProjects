@@ -1,7 +1,6 @@
 import { useNavigation } from '@react-navigation/native';
-import { Image, Text, TouchableWithoutFeedback, View } from 'react-native';
+import { Text, TouchableWithoutFeedback, View } from 'react-native';
 import Carousel from 'react-native-snap-carousel';
-import { Images } from '../constants/images';
 import { Routes } from '../constants/routes';
 import { getDimension } from '../utilities/commonFunctions';
 
@@ -34,12 +33,13 @@ export default function TrendingMovies({data}) {
 const MovieCard = ({item, handleClick})=>{
   return(
     <TouchableWithoutFeedback onPress={()=>handleClick(item)}>
-      <Image source = {Images.naruto}
+      {/* <Image source = {Images.naruto}
       style={{
         width:screenWidth*0.6,
         height:screenHeight*0.4,
       }}
-      />
+      /> */}
+      <Text>heysty</Text>
     </TouchableWithoutFeedback>
   )
 }
